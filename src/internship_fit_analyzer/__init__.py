@@ -1,0 +1,1 @@
+"""Internship Fit Analyzer package."""
