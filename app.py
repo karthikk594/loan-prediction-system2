@@ -127,7 +127,10 @@ def load_training_dataset() -> pd.DataFrame:
 def ensure_trained_model(dataset: pd.DataFrame):
     MODEL_OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     if MODEL_OUTPUT_PATH.exists():
-        return load_artifacts(str(MODEL_OUTPUT_PATH))
+        try:
+            return load_artifacts(str(MODEL_OUTPUT_PATH))
+        except Exception:
+            pass
 
     artifacts = train_decision_tree(
         data=dataset,
